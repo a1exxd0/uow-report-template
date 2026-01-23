@@ -1,0 +1,20 @@
+\chapter{Introduction} % 500 words
+\label{ch:introduction}
+The field of quantum computing is predicated on the potential to solve certain computational problems that are believed to be intractable for even the most powerful classical computers. This promise of "quantum advantage" extends to machine learning, where quantum algorithms may offer exponential speedups in tasks such as data classification \cite{Rebentrost_2014}, representational power \cite{Pirnay_2023}, and runtimes for learning and inference \cite{doi:10.1126/sciadv.aat9004}.
+
+\section{Problem Statement} % and gap in existing provision
+The physical realization of large-scale, fault-tolerant quantum computers that we have seen flourish with classical computers still remains a formidable scientific and egineering challenge. In the forseeable future, access to these powerful devices will likely be limited, provided primarily through cloud-based platforms where users remotely submit computational tasks to a quantum server and can verify classically its computation \cite{morimae2020rationalproofsquantumcomputing}.
+
+The trust issue inherent in the client-server model is what necessitates interactive proofs - the client acts as the "verifier" and the server as the "prover". The goal is for the computationally weak client to verify the result from the powerful, but untrusted server.
+
+This culminated in the discovery of Mahadev's breakthrough verification protocol \cite{mahadev2023classicalverificationquantumcomputations}, where she was able to achieve a strong result centred around the Quantum Prover Interactive Proof (QPIP) \cite{aharonov2017interactiveproofsquantumcomputations}. She found that under some preconditions, all decision problems which can efficiently be computed in quantum polynomial time (BQP) can be verified by an efficient classical machine through interaction.
+
+Quantum learning is a key application for this model - reliable schemes that allow classical clients to delegate learning to untrusted quantum servers is a prerequisite to having widespread access to quantum learning advantages, with \cite{https://doi.org/10.4230/lipics.itcs.2024.24} extending the notion of interactive proofs to also apply to quantum learning problems originally started by \cite{goldwasser_et_al:LIPIcs.ITCS.2021.41}.
+
+\section{Research Gap}
+A significant gap exists between the theoretical promise of verification and its practical feasibility. While recent research has demonstrated that purely classical clients can verify highly structured learning problems (such as agnostic parity learning), even on noisy quantum hardware \cite{ma2024classicalverificationquantumlearning}, these solutions are not broadly generalizable. For a wider class of quantum learning tasks, it has been shown that classical interaction is fundamentally insufficient for a resource-constrained verifier to overcome their limitations \cite{caro2025interactiveproofsverifyingquantum}.
+
+The central challenge is therefore to make targeted optimizations on existing verification schemes, surgically reducing their demands on critical resources from client memory, communication bandwidth, to coherence times. I aim to do this whilst building in robustness against noise and decoherence effects, bridging an implementation gap and modifying a protocol to operate effectively within realistic constraints to find a concrete path toward making secure, delegated QML a practical reality on the hardware of the near future.
+
+\section{Notes on mathematics}
+In the interest of word count, I will not explore too deeply the fundamental mathematics underpinning quantum computing and take it as assumed knowledge for the sake of the progress report. The final report will contain the necessary definitions for an undergraduate level student to understand in entirety.

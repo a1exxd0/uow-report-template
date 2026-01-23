@@ -1,0 +1,18 @@
+# Macos metadata
+.DS_Store
+
+# Output directory
+build/*.*
+build/_minted
+
+
+# LaTeX
+*.aux
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex.gz
