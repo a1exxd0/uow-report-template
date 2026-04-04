@@ -33,6 +33,12 @@ A clean, academic report template built with [Typst](https://typst.app/), featur
 
 ## Getting Started
 
+### Use this template
+
+1. Click the green **"Use this template"** button at the top of the repository page, then select **"Create a new repository"**.
+2. Choose an owner and repository name, then click **"Create repository"**.
+3. Clone your new repository and start editing.
+
 ### Prerequisites
 
 - [Typst](https://typst.app/) (`brew install typst` on macOS)
