@@ -1,28 +1,18 @@
 # Report template for submissions of work at the University of Warwick
 
+Built with [Typst](https://typst.app/).
+
 # Usage
 
-To add packages, look in `utils/preamble.tex`.
-
-Add chapters as tex files in `chapters/` and include them in `main.tex`.
-
-I personally use [inkscape](https://inkscape.org/) as an SVG editor for the title page. Original credit to [Edmund Goodman](https://github.com/EdmundGoodman) for this!
+Edit `main.typ` to configure your title, author, student ID, supervisor, and date. Add chapters as `.typ` files in `chapters/` and `#include` them in `main.typ`. The template (`template.typ`) provides `report`, `theorem`, `definition`, and `proof` environments.
 
 # Dependencies
 
-Need:
-
-- [MacTeX](https://www.tug.org/mactex/) or another latex compiler
-
-Might like:
-
-- [latexindent](https://latexindentpl.readthedocs.io/en/latest/) for formatting
+- [Typst](https://typst.app/) (`brew install typst` on macOS)
 
 # Build
 
 ```sh
-make           - build pdf
-make clean     - remove auxiliary files
-make distclean - remove all generated files including pdf
-make watch     - continuously compile on changes
+typst compile main.typ          # build pdf
+typst watch main.typ            # recompile on changes
 ```
