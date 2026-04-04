@@ -7,7 +7,7 @@
 
 # University of Warwick Report Template
 
-A clean, academic report template built with [Typst](https://typst.app/) — featuring title pages, table of contents, theorem environments, and appendix support.
+A clean, academic report template built with [Typst](https://typst.app/), featuring title pages, table of contents, theorem environments, and appendix support.
 
 </div>
 
@@ -48,6 +48,6 @@ typst watch main.typ     # recompile on changes
 
 1. Edit `main.typ` to configure your title, author, student ID, supervisor, and date.
 2. Add chapters as `.typ` files in `chapters/` and `#include` them in `main.typ`.
-3. Use the environments provided by `template.typ` — `report`, `theorem`, `definition`, and `proof`.
+3. Use the environments provided by `template.typ`: `report`, `theorem`, `definition`, and `proof`.
 
 Bibliography works the same as in LaTeX via `bibliography.bib`.
