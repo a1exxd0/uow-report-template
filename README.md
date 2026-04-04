@@ -1,3 +1,8 @@
+[![Typst](https://img.shields.io/badge/Built_with-Typst-239dad)](https://typst.app/)
+[![Stars](https://img.shields.io/github/stars/a1exxd0/uow-report-template)](https://github.com/a1exxd0/uow-report-template/stargazers)
+[![Last commit](https://img.shields.io/github/last-commit/a1exxd0/uow-report-template)](https://github.com/a1exxd0/uow-report-template/commits)
+[![License: MIT](https://img.shields.io/github/license/a1exxd0/uow-report-template)](LICENSE)
+
 # Report template for submissions of work at the University of Warwick
 
 Built with [Typst](https://typst.app/).
