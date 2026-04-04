@@ -1,7 +1,7 @@
 #import "template.typ": report, theorem, definition, proof
 
 #show: report.with(
-  title: [Interactive Proofs for Resource-Constrained\ Quantum Learning],
+  title: [A nonsensical template with some notes on\ quantum learning],
   author: "Alex Do",
   student-id: "2100000",
   supervisor: "Dr. Jane Smith",
@@ -54,6 +54,11 @@
 #include "chapters/methodology.typ"
 #include "chapters/evaluation.typ"
 #include "chapters/conclusion.typ"
+
+// ── Appendices ──────────────────────────────────────────────────────
+#counter(heading).update(0)
+#set heading(numbering: "A.1")
+#include "chapters/appendix-circuits.typ"
 
 // ── Bibliography ─────────────────────────────────────────────────────
 #bibliography("bibliography.bib", style: "ieee")

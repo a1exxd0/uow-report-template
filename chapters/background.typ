@@ -18,7 +18,7 @@ Probably Approximately Correct (PAC) learning formalises the notion of efficient
 
 == Quantum Computation Preliminaries <sec:quantum-prelim>
 
-A quantum state on $n$ qubits is represented as a unit vector $lr(|psi chevron.r) in bb(C)^(2^n)$, and a quantum channel is a completely positive trace-preserving (CPTP) map acting on density operators @king2002capacityquantumdepolarizingchannel.
+A quantum state on $n$ qubits is represented as a unit vector $lr(|psi chevron.r) in bb(C)^(2^n)$, and a quantum channel is a completely positive trace-preserving (CPTP) map acting on density operators @king2002capacityquantumdepolarizingchannel. Circuit diagrams for common quantum operations are provided in @app:circuits.
 
 The depolarising channel with noise parameter $p$ acts on a single-qubit state $rho$ as:
 $ cal(E)_p (rho) = (1 - p) rho + p / 3 (X rho X + Y rho Y + Z rho Z) $ <eq:depolarising>
