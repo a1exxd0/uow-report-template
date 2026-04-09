@@ -1,4 +1,5 @@
-#import "template.typ": report, theorem, definition, proof
+#import "template.typ": definition, proof, report, theorem
+#import "@preview/wordometer:0.1.5": word-count
 
 #show: report.with(
   title: [A nonsensical template with some notes on\ quantum learning],
@@ -49,11 +50,15 @@
 )
 #counter(page).update(1)
 
-#include "chapters/introduction.typ"
-#include "chapters/background.typ"
-#include "chapters/methodology.typ"
-#include "chapters/evaluation.typ"
-#include "chapters/conclusion.typ"
+#[
+  #show: word-count.with(exclude: (math.equation))
+  #include "chapters/introduction.typ"
+  #include "chapters/background.typ"
+  #include "chapters/methodology.typ"
+  #include "chapters/evaluation.typ"
+  #include "chapters/conclusion.typ"
+]
+
 
 // ── Appendices ──────────────────────────────────────────────────────
 #counter(heading).update(0)

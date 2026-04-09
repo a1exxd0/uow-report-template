@@ -1,5 +1,6 @@
 // University of Warwick — Department of Computer Science report template.
 // Usage: #show: report.with(title: ..., author: ..., ...)
+#import "@preview/wordometer:0.1.5": total-words, word-count
 
 #let report(
   title: none,
@@ -13,9 +14,9 @@
   set document(title: title, author: author)
   set page(paper: "a4", margin: (x: 2cm, y: 2cm))
   set text(font: "New Computer Modern", size: 12pt, lang: "en")
-  set par(justify: true, leading: 0.55em, spacing: 0.8em)
+  set par(justify: true, leading: 0.75em, spacing: 1.2em)
   set heading(numbering: "1.1")
-  set block(spacing: 0.8em)
+  set block(spacing: 1.2em)
 
   // ── Heading styles ─────────────────────────────────────────────────
   show heading.where(level: 1): it => {
@@ -65,7 +66,10 @@
     // Title and metadata
     v(1cm)
     align(center)[
-      #text(size: 24pt, weight: "bold", title)
+      #block(width: 80%)[
+        #set par(leading: 0.4em, justify: false)
+        #text(size: 22pt, weight: "bold", title)
+      ]
       #v(0.8cm)
       #text(size: 14pt, author)
       #if student-id != none [ \ #text(size: 12pt)[Student ID: #student-id] ]
@@ -82,6 +86,8 @@
       #line(length: 3cm, stroke: 0.5pt + brand-purple)
       #v(0.4cm)
       #text(size: 11pt, fill: luma(100))[Department of Computer Science \ University of Warwick]
+      #v(0.4cm)
+      #text(size: 10pt, fill: luma(100))[Word count: #total-words]
     ]
     v(2cm)
 
@@ -96,31 +102,88 @@
 }
 
 // ── Theorem environments ───────────────────────────────────────────
-#let theorem-counter = counter("theorem")
-#let definition-counter = counter("definition")
-
-#let theorem(body, name: none) = {
-  theorem-counter.step()
+#let theorem(body, name: none) = figure(
   block(
     width: 100%,
     inset: 10pt,
     stroke: (left: 2pt + luma(80)),
     fill: luma(245),
   )[
-    *Theorem #context theorem-counter.display()#if name != none [ (#name)]*. #emph(body)
-  ]
-}
+    #align(left)[
+      *Theorem #context {
+        let num = counter(figure.where(kind: "theorem")).display()
+        [#num]
+      }#if name != none [
+        (#name)]*.
+      #emph(body)
+    ]
+  ],
+  kind: "theorem",
+  supplement: "Theorem",
+)
 
-#let definition(body, name: none) = {
-  definition-counter.step()
+#let corollary(body, name: none) = figure(
+  block(
+    width: 100%,
+    inset: 10pt,
+    stroke: (left: 2pt + luma(80)),
+    fill: luma(245),
+  )[
+    #align(left)[
+      *Corollary #context {
+        let num = counter(figure.where(kind: "corollary")).display()
+        [#num]
+      }#if name != none [
+        (#name)]*.
+      #emph(body)
+    ]
+  ],
+  kind: "corollary",
+  supplement: "Corollary",
+)
+
+#let lemma(body, name: none) = figure(
+  block(
+    width: 100%,
+    inset: 10pt,
+    stroke: (left: 2pt + luma(80)),
+    fill: luma(245),
+  )[
+    #align(left)[
+      *Lemma #context {
+        let num = counter(figure.where(kind: "lemma")).display()
+        [#num]
+      }#if name != none [
+        (#name)]*. #body
+    ]
+  ],
+  kind: "lemma",
+  supplement: "Lemma",
+)
+
+#let definition(body, name: none) = figure(
   block(
     width: 100%,
     inset: 10pt,
     stroke: (left: 2pt + luma(140)),
     fill: luma(250),
   )[
-    *Definition #context definition-counter.display()#if name != none [ (#name)]*. #body
-  ]
+    #align(left)[
+      *Definition #context {
+        let num = counter(figure.where(kind: "definition")).display()
+        [#num]
+      }#if name != none [
+        (#name)]*. #body
+    ]
+  ],
+  kind: "definition",
+  supplement: "Definition",
+)
+
+#show heading.where(level: 1): it => {
+  counter(figure.where(kind: "theorem")).update(0)
+  counter(figure.where(kind: "definition")).update(0)
+  it
 }
 
 #let proof(body) = {
