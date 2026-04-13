@@ -101,6 +101,69 @@
   body
 }
 
+// ── Problem set / short-form report ────────────────────────────────
+#let problem-set(
+  title: none,
+  author: none,
+  student-id: none,
+  module: none,
+  date: none,
+  body,
+) = {
+  // ── Page & font setup ──────────────────────────────────────────────
+  set document(title: title, author: author)
+  set page(paper: "a4", margin: (x: 2cm, y: 2cm), numbering: "1")
+  set text(font: "New Computer Modern", size: 12pt, lang: "en")
+  set par(justify: true, leading: 0.75em, spacing: 1.2em)
+  set block(spacing: 1.2em)
+
+  // ── Heading numbering: 1. / a. / i. ───────────────────────────────
+  set heading(numbering: "1.a.")
+
+  show heading.where(level: 1): it => {
+    v(0.6em)
+    text(size: 12pt, weight: "regular", style: "italic", it)
+    v(0.3em)
+  }
+
+  show heading.where(level: 2): it => {
+    v(0.4em)
+    text(size: 12pt, weight: "regular", style: "italic", it)
+    v(0.2em)
+  }
+
+  show heading.where(level: 3): it => {
+    v(0.3em)
+    text(size: 12pt, weight: "regular", style: "italic", it)
+    v(0.15em)
+  }
+
+  // ── Figures & equations ────────────────────────────────────────────
+  set math.equation(numbering: "(1)")
+  set figure(gap: 0.8em)
+  show figure.caption: set text(size: 0.9em)
+
+  // ── Compact header ─────────────────────────────────────────────────
+  {
+    let brand-purple = rgb("#3C1053")
+
+    align(center)[
+      #text(size: 16pt, weight: "bold", title)
+      #v(0.3cm)
+      #text(size: 12pt, author)
+      #if student-id != none [ --- #text(size: 11pt, student-id)]
+      #if module != none [\ #text(size: 11pt, module)]
+      #if date != none [\ #text(size: 11pt, date)]
+    ]
+
+    v(0.3cm)
+    line(length: 100%, stroke: 0.5pt + brand-purple)
+    v(0.3cm)
+  }
+
+  body
+}
+
 // ── Theorem environments ───────────────────────────────────────────
 #let theorem(body, name: none) = figure(
   block(
