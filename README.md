@@ -7,11 +7,13 @@
 
 # University of Warwick Report Template
 
-A clean, academic report template built with [Typst](https://typst.app/), featuring title pages, table of contents, theorem environments, and appendix support.
+A clean, academic report template built with [Typst](https://typst.app/), with two styles to choose from: a full **report** layout (title page, table of contents, chapter headers, appendices) and a compact **problem set** layout for short-form submissions. Both include theorem environments, equation numbering, and bibliography support.
 
 </div>
 
 ## Preview
+
+### Report
 
 <p align="center">
   <img src="assets/preview-title.png" width="30%" />
@@ -31,6 +33,15 @@ A clean, academic report template built with [Typst](https://typst.app/), featur
   <sub>Appendix with quantum circuit diagrams</sub>
 </p>
 
+### Problem Set
+
+<p align="center">
+  <img src="assets/preview-problem-set.png" width="30%" />
+</p>
+<p align="center">
+  <sub>Compact header with 1.a. numbering for questions and parts</sub>
+</p>
+
 ## Getting Started
 
 ### Use this template
@@ -46,14 +57,50 @@ A clean, academic report template built with [Typst](https://typst.app/), featur
 ### Build
 
 ```sh
-typst compile main.typ   # build PDF
-typst watch main.typ     # recompile on changes
+typst compile report.typ   # build PDF
+typst watch report.typ     # recompile on changes
+
+# Alternatively for the problem set
+typst compile problem-set.typ
+typst watch problem-set.typ
 ```
 
 ## Usage
 
-1. Edit `main.typ` to configure your title, author, student ID, supervisor, and date.
-2. Add chapters as `.typ` files in `chapters/` and `#include` them in `main.typ`.
-3. Use the environments provided by `template.typ`: `report`, `theorem`, `definition`, and `proof`.
+The template provides two styles. Import the one you need from `template.typ`:
 
-Bibliography works the same as in LaTeX via `bibliography.bib`.
+### Report (dissertations, long-form projects)
+
+```typ
+#import "template.typ": report, theorem, definition, proof
+
+#show: report.with(
+  title: [My Report Title],
+  author: "Your Name",
+  student-id: "2100000",
+  supervisor: "Dr. Jane Smith",
+  date: "April 2026",
+)
+```
+
+Includes a branded title page, roman-numeral front matter, table of contents, chapter headers, and word count. Add chapters as `.typ` files in `chapters/` and `#include` them in `main.typ`.
+
+### Problem Set (short-form reports, assignments)
+
+```typ
+#import "template.typ": problem-set, theorem, definition, proof
+
+#show: problem-set.with(
+  title: [CS261 — Problem Set 1],
+  author: "Your Name",
+  student-id: "2100000",
+  module: "CS261 Software Engineering",
+  date: "April 2026",
+)
+```
+
+Compact header, no title page or contents. Headings use `1.a.` numbering — `=` for questions, `==` for parts, `===` for sub-parts.
+
+### Shared features
+
+Both styles provide `theorem`, `corollary`, `lemma`, `definition`, and `proof` environments, equation numbering, and bibliography support via `bibliography.bib`.
